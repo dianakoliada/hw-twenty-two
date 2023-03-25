@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+// import "./App.css";
+import HomePage from "./components/homePage";
+import HttpHeroProvider from "./providers/httpHeroProvider";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <HttpHeroProvider>
+        <HomePage />
+      </HttpHeroProvider>
     </div>
   );
 }
 
 export default App;
+
+// Напишите приложение на реакт с использованием контекста. Приложение должно состоять из провайдера запросов на бэк и списка персонажей, который будет подгружатся с бэка.
+
+// Списком выступает перечень персонажей из Рик и Морти апи. Добавте пагинацию под список.
+
+// Cделайте переключатель темы Светлая/Темная, которая будет менять цвет фона с темного на светлый, по аналогии с предыдущим ДЗ.
+// Пагинатор (компонент с выбором странички) реализйте классовым компонентом, он должен менят цвет фона и в зависимости от выбранной темы.
