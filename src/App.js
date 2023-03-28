@@ -1,22 +1,27 @@
-// import "./App.css";
-import HomePage from "./components/homePage";
-import HttpHeroProvider from "./providers/httpHeroProvider";
+import "./style/style.css";
+import HeroCardClassComponent from "./components/heroCard";
+import { HttpHeroProvider } from "./providers/httpHeroProvider";
+import { ChangeThemeProvider } from "./providers/changeThemeProvider";
+import { ChangeThemeContext } from "./providers/changeThemeProvider";
 
 function App() {
   return (
     <div className="App">
-      <HttpHeroProvider>
-        <HomePage />
-      </HttpHeroProvider>
+      <ChangeThemeProvider>
+        <HttpHeroProvider>
+          <ChangeThemeContext.Consumer>
+            {({ theme, changeThemeToLight, changeThemeToDark }) => (
+              <HeroCardClassComponent
+                theme={theme}
+                changeThemeToDark={changeThemeToDark}
+                changeThemeToLight={changeThemeToLight}
+              />
+            )}
+          </ChangeThemeContext.Consumer>
+        </HttpHeroProvider>
+      </ChangeThemeProvider>
     </div>
   );
 }
 
 export default App;
-
-// Напишите приложение на реакт с использованием контекста. Приложение должно состоять из провайдера запросов на бэк и списка персонажей, который будет подгружатся с бэка.
-
-// Списком выступает перечень персонажей из Рик и Морти апи. Добавте пагинацию под список.
-
-// Cделайте переключатель темы Светлая/Темная, которая будет менять цвет фона с темного на светлый, по аналогии с предыдущим ДЗ.
-// Пагинатор (компонент с выбором странички) реализйте классовым компонентом, он должен менят цвет фона и в зависимости от выбранной темы.

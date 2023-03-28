@@ -1,33 +1,29 @@
 import React from "react";
 import { HttpHeroContext } from "../providers/httpHeroProvider";
+import { ChangeTheme } from "../components/changeThemeComponent";
 
-// Пагинатор (компонент с выбором странички) реализйте классовым компонентом, он должен менят цвет фона и в зависимости от выбранной темы.
-//Consumer для провайдера теми(потім зроблю)
-
-class PaginationClassComponent extends React.Component {
+class HeroCardClassComponent extends React.Component {
   static contextType = HttpHeroContext;
 
   constructor(props) {
     super(props);
   }
 
-  componentDidMount() {
-    console.log("Mounted");
-  }
-
   handlePrevPage = () => {
-    console.log("prev");
     this.context.fetchHeros(this.context.data.info.prev);
   };
 
   handleNextPage = () => {
-    console.log("next");
     this.context.fetchHeros(this.context.data.info.next);
   };
 
   render() {
     return (
-      <>
+      <div className={this.props.theme === "light" ? "light" : "dark"}>
+        <ChangeTheme
+          changeThemeToDark={this.props.changeThemeToDark}
+          changeThemeToLight={this.props.changeThemeToLight}
+        ></ChangeTheme>
         {this.context.data?.results &&
           this.context.data.results.map((hero, index) => (
             <div className="hero-box">
@@ -46,9 +42,9 @@ class PaginationClassComponent extends React.Component {
           <button onClick={this.handlePrevPage}>Prev</button>
           <button onClick={this.handleNextPage}>Next</button>
         </div>
-      </>
+      </div>
     );
   }
 }
 
-export default PaginationClassComponent;
+export default HeroCardClassComponent;

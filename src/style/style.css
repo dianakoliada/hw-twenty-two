@@ -2,14 +2,6 @@
     box-sizing: border-box;
 }
 
-.wrapper {
-
-}
-
-.hero-wrap {
-
-}
-
 .hero-box {
     margin: 0 auto;
     width: 40%;
@@ -53,9 +45,24 @@ button {
     border: none;
     width: 140px;
     line-height: 25px;
-    margin: 10px;
+    margin: 8px;
+}
+
+.btn__position {
+    position: fixed;
 }
 
 button:hover {
     cursor: pointer;
 }
+
+.light {
+    background: white;
+    color: #282c34;
+}
+
+.dark {
+    background: #282c34;
+    color: white;;
+}
+
